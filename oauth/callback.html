@@ -4,35 +4,28 @@
     <meta charset="UTF-8" />
     <title>로그인 처리 중...</title>
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("code");
-
+      const code = new URLSearchParams(
+        window.location.search
+      ).get("code");
       if (code) {
         fetch(
           `https://focuscoach.click/api/oauth/google?code=${code}`
         )
-          .then((res) => {
-            if (!res.ok) throw new Error("서버 오류");
-            return res.json();
-          })
+          .then((res) => res.json())
           .then((data) => {
-            if (!data.isSuccess)
-              throw new Error(data.message || "실패");
-
-            // 예시: 토큰 저장 및 홈 이동
+            alert(`환영합니다, ${data.result.name}님`);
             localStorage.setItem(
               "accessToken",
               data.result.accessToken
             );
-            alert(`환영합니다, ${data.result.name}님!`);
-            window.location.href = "/home.html"; // 실제 홈 URL로 변경
+            window.location.href = "/home.html"; // 이동할 페이지
           })
           .catch((err) => {
-            console.error("로그인 실패", err);
-            alert("로그인에 실패했습니다. 다시 시도해주세요.");
+            console.error(err);
+            alert("로그인 실패");
           });
       } else {
-        alert("Google 로그인 인가 코드가 없습니다.");
+        alert("Google 인가 코드가 없습니다.");
       }
     </script>
   </head>

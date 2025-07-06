@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>포코 홈</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 3rem;
+        background-color: #f8f9fa;
+      }
+      .card {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .btn {
+        margin-top: 2rem;
+        padding: 0.7rem 1.2rem;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>환영합니다!</h1>
+      <p id="username">사용자 정보를 불러오는 중...</p>
+      <button class="btn" onclick="logout()">로그아웃</button>
+    </div>
+  </body>
+</html>
