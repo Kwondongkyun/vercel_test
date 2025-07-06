@@ -19,22 +19,22 @@ function handleCredentialResponse(response) {
   const idToken = response.credential;
   console.log("받은 토큰:", idToken);
 
-  // 백엔드로 전송
-  fetch("http://localhost:8080/api/oauth/google", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: idToken }),
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error("서버 오류");
-      return res.json();
-    })
-    .then((data) => {
-      alert(`환영합니다, ${data.name}님!`);
-      // 이후 토큰 저장하거나 페이지 이동 등
-    })
-    .catch((err) => {
-      console.error("로그인 실패", err);
-      alert("로그인에 실패했습니다.");
-    });
+  // // 백엔드로 전송
+  // fetch("http://localhost:8080/api/oauth/google", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({ token: idToken }),
+  // })
+  //   .then((res) => {
+  //     if (!res.ok) throw new Error("서버 오류");
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     alert(`환영합니다, ${data.name}님!`);
+  //     // 이후 토큰 저장하거나 페이지 이동 등
+  //   })
+  //   .catch((err) => {
+  //     console.error("로그인 실패", err);
+  //     alert("로그인에 실패했습니다.");
+  //   });
 }
